@@ -1,5 +1,12 @@
 <article>
   @for (book of books(); track $index) {
-  <app-book-card [book]="book" />
+  <app-book-card
+    (onOpenDeleteDialog)="onOpenDeleteDialog($event)"
+    [book]="book"
+  />
   }
 </article>
+
+@if (isDeleteDialogOpen) {
+<app-dialog (onCloseDialog)="isDeleteDialogOpen = false"></app-dialog>
+}

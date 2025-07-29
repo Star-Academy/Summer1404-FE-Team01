@@ -16,6 +16,14 @@ export class Books implements OnInit {
 
   books = signal<BookCardModel[]>([])
 
+  isDeleteDialogOpen = false;
+  selectedBookId: number | null = null;
+
+  onOpenDeleteDialog(bookId: number) {
+    console.log(bookId);
+    this.isDeleteDialogOpen = true;
+    this.selectedBookId = bookId;
+  }
   ngOnInit() {
     this.books.set(this.bookService.books);
     console.log(this.books)

@@ -12,14 +12,15 @@ import { routes } from "./dashboard.routing.module";
 import { Button } from "../../components/button/button";
 import { ReactiveFormsModule } from "@angular/forms";
 import { CreateBook } from "./create-book/create-book";
+import { Dialog } from "../../components/dialog/dialog";
 
 @NgModule({
     declarations: [Dashboard, Books, BookCard, CreateBook],
     imports: [RouterModule.forChild(routes),
-        RouterOutlet, Header,
-        Footer, Sidebar,
-        CommonModule, Button,
-        ReactiveFormsModule,CurrencyPipe],
+    RouterOutlet, Header,
+    Footer, Sidebar,
+    CommonModule, Button,
+    ReactiveFormsModule, CurrencyPipe, Dialog],
     providers: [DashboardService]
 })
 export class DashboardModule { }
