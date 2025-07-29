@@ -1,4 +1,4 @@
-import { Component, Input, input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { BookCardModel } from '../../../../models/books.model';
 
 @Component({

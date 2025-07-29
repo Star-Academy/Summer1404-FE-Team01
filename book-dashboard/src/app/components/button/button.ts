@@ -1,6 +1,5 @@
 import { Component, input, output } from '@angular/core';
-
-type buttonType = 'submit' | "button"
+import {ButtonBgColor, buttonType } from '../../models/button.model';
 
 @Component({
   selector: 'app-button',
@@ -14,4 +13,5 @@ export class Button {
   text = input<string>('click');
   type = input<buttonType>("button");
   onClick = output<void>();
+  bgColor= input<ButtonBgColor>('primary');
 }
