@@ -1,28 +1,39 @@
 :host {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  gap: 0.5rem;
+  gap: 1rem;
   padding: 0.5rem;
   background-color: var(--color-surface);
   border-radius: 1rem;
 
-  img {
-    border-radius: 1rem;
-    height: 15rem;
-  }
+  div {
+    > img {
+      border-radius: 1rem;
+      min-height: 15rem;
+      height: 15rem;
+      width: 100%;
+    }
 
-  h3 {
-    margin-top: 1rem;
+    .content {
+      margin-top: 0.6rem;
+      // text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      > p {
+        font-size: 0.9rem;
+        text-align: start;
+      }
+    }
   }
 
   #button_container {
-    display:flex;
+    display: flex;
+    gap: 1rem;
 
     > app-button {
-      flex : 1;
+      flex: 1;
     }
   }
 }
-
-
