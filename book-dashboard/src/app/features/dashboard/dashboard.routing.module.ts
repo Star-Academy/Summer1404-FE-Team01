@@ -11,6 +11,11 @@ export const routes: Routes = [
         component: Dashboard,
         children: [
             {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'books'
+            },
+            {
                 path: 'books',
                 component: Books
             },
