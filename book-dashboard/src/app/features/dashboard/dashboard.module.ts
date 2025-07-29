@@ -13,14 +13,15 @@ import { Button } from "../../components/button/button";
 import { ReactiveFormsModule } from "@angular/forms";
 import { CreateBook } from "./create-book/create-book";
 import { Dialog } from "../../components/dialog/dialog";
+import { EditBookComponent } from "./edit-book/edit-book";
 
 @NgModule({
     declarations: [Dashboard, Books, BookCard, CreateBook],
     imports: [RouterModule.forChild(routes),
-    RouterOutlet, Header,
-    Footer, Sidebar,
-    CommonModule, Button,
-    ReactiveFormsModule, CurrencyPipe, Dialog],
+        RouterOutlet, Header,
+        Footer, Sidebar,
+        CommonModule, Button,
+        ReactiveFormsModule, CurrencyPipe, Dialog, EditBookComponent],
     providers: [DashboardService]
 })
 export class DashboardModule { }

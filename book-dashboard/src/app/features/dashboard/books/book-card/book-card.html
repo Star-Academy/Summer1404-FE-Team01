@@ -4,7 +4,10 @@
   <p>{{ book().price | currency }}</p>
 </div>
 <div id="button_container">
-<app-button [bgColor]="'danger'" [text]="'Delete'" (click)="onDelete()" />
-<app-button  [text]="'Edit'" (onclick)="onEdit()" />
-
+  <app-button [bgColor]="'danger'" [text]="'Delete'" (click)="onDelete()" />
+  <app-button [text]="'Edit'" (onClick)="setIsOpen()" />
 </div>
+
+@if(isEditModalOpen) {
+<app-edit-book [bookId]="book().id" (close)="setIsClose()" />
+}

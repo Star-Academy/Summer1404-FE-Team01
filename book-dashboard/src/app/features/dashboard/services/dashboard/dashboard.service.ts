@@ -9,7 +9,7 @@ export class DashboardService {
   constructor() {
     this._books = booksData;
   }
-  
+
   get books() {
     return this._books
   }
@@ -18,14 +18,15 @@ export class DashboardService {
     this._books.push(book)
   }
 
-  deleteBookById(bookId : number) : void{
+  deleteBookById(bookId: number): void {
     this._books.filter(book => book.id !== bookId);
   }
 
-  editBookById(editedBook: BookCardModel) {
-    let oldBook = this._books.find(book => editedBook.id === book.id);
-    oldBook = editedBook;
+  editBookById(editedBook: BookCardModel): void {
+    const index = this._books.findIndex(book => book.id === editedBook.id);
+    if (index !== -1) {
+      this._books[index] = editedBook;
+    }
   }
-
 
 }

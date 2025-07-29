@@ -1,0 +1,45 @@
+<div class="backdrop" (click)="onCancle()"></div>
+<dialog open>
+  <h2>Add Task</h2>
+  <form (ngSubmit)="onSubmit()">
+    <p>
+      <label for="name">Book Name</label>
+      <input type="text" id="name" name="name" [(ngModel)]="enteredName" />
+    </p>
+    <p>
+      <label for="image">Image URL</label>
+      <input type="text" id="image" name="image" [(ngModel)]="enteredImage" />
+    </p>
+    <p>
+      <label for="genre">Genre</label>
+      <input type="text" id="genre" name="genre" [(ngModel)]="enteredGenre" />
+    </p>
+    <p>
+      <label for="author">Author</label>
+      <input
+        type="text"
+        id="author"
+        name="author"
+        [(ngModel)]="enteredAuthor"
+      />
+    </p>
+    <p>
+      <label for="publishData">Publish Date</label>
+      <input
+        type="text"
+        id="publishData"
+        name="publishData"
+        [(ngModel)]="enteredPublishData"
+      />
+    </p>
+    <p>
+      <label for="price">Price</label>
+      <input type="text" id="price" name="price" [(ngModel)]="enteredPrice" />
+    </p>
+
+    <p class="actions">
+      <button type="button" (click)="onCancle()">Cancel</button>
+      <button type="submit">Edit</button>
+    </p>
+  </form>
+</dialog>
