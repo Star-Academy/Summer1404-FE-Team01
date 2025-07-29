@@ -1,4 +1,5 @@
 export interface BookCardModel {
+    id?: number;
     name: string,
     image: string,
     genre: string[],

@@ -18,8 +18,13 @@ export class DashboardService {
     this._books.push(book)
   }
 
-  deleteBookById(bookId : string) : void{
+  deleteBookById(bookId : number) : void{
     this._books.filter(book => book.id !== bookId);
+  }
+
+  editBookById(editedBook: BookCardModel) {
+    let oldBook = this._books.find(book => editedBook.id === book.id);
+    oldBook = editedBook;
   }
 
 
