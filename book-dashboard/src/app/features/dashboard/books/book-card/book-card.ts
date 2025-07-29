@@ -9,4 +9,7 @@ import { BookCardModel } from '../../../../models/books.model';
 })
 export class BookCard {
   book = input.required<BookCardModel>()
+
+  onDelete(){}
+  onEdit(){}
 }

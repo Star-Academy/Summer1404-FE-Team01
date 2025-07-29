@@ -17,4 +17,10 @@ export class DashboardService {
   addBook(book: BookCardModel) {
     this._books.push(book)
   }
+
+  deleteBookById(bookId : string) : void{
+    this._books.filter(book => book.id !== bookId);
+  }
+
+
 }
