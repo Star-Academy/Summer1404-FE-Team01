@@ -6,25 +6,26 @@
   background-color: var(--color-surface);
   border-radius: 1rem;
 
-  div {
-    > img {
-      border-radius: 1rem;
-      min-height: 15rem;
-      height: 15rem;
-      width: 100%;
-    }
+  animation: come-in 1s linear forwards;
+  animation-timeline: view();
+  animation-range-start: 2rem;
+  animation-range-end: 20rem;
 
-    .content {
-      margin-top: 0.6rem;
-      // text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+  > img {
+    border-radius: 1rem;
+    min-height: 15rem;
+    height: 15rem;
+    width: 100%;
+  }
 
-      > p {
-        font-size: 0.9rem;
-        text-align: start;
-      }
+  .content {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    > p {
+      font-size: 0.9rem;
     }
   }
 
@@ -35,5 +36,14 @@
     > app-button {
       flex: 1;
     }
+  }
+}
+
+@keyframes come-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
