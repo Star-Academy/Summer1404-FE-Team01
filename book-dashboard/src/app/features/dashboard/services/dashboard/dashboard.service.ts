@@ -29,4 +29,8 @@ export class DashboardService {
     }
   }
 
+  getBookById(bookId: number): BookCardModel | undefined {
+    return this._books.find(book => book.id === bookId);
+  }
+
 }
