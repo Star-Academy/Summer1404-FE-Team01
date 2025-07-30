@@ -8,9 +8,9 @@
   /* -- BACKGROUND & SURFACE -- */
   /* Use for the main body background */
   --color-background: hsl(220, 25%, 10%);
-  
+
   /* Use for cards, modals, and sidebars with the blur effect */
-  --color-surface: hsla(220, 20%, 18%, 0.75); 
+  --color-surface: hsla(220, 20%, 18%, 0.75);
 
   /* -- BORDERS & DIVIDERS -- */
   --color-border: hsla(220, 20%, 50%, 0.102);
@@ -21,14 +21,18 @@
   --color-primary-hover: hsl(210, 90%, 65%);
 
   /* -- TEXT COLORS -- */
-  --color-text-primary: hsl(210, 20%, 95%);   /* For headings and important text */
+  --color-text-primary: hsl(
+    210,
+    20%,
+    95%
+  ); /* For headings and important text */
   --color-text-secondary: hsl(210, 15%, 65%); /* For labels and paragraphs */
-  --color-text-accent: hsl(210, 20%, 95%);    /* For text on primary buttons */
+  --color-text-accent: hsl(210, 20%, 95%); /* For text on primary buttons */
 
   /* -- STATE COLORS (for CRUD feedback) -- */
-  --color-success: hsl(140, 70%, 50%);  /* Green for 'Create/Update' success */
-  --color-danger: hsl(0, 80%, 65%);    /* Red for 'Delete' or errors */
-  --color-warning: hsl(38, 90%, 60%);  /* Amber for warnings */
+  --color-success: hsl(140, 70%, 50%); /* Green for 'Create/Update' success */
+  --color-danger: hsl(0, 80%, 65%); /* Red for 'Delete' or errors */
+  --color-warning: hsl(38, 90%, 60%); /* Amber for warnings */
 }
 
 * {
@@ -38,7 +42,7 @@
 }
 
 body {
-    font-family: system-ui, -apple-system, sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   background-color: var(--color-background);
   color: var(--color-text-primary);
   display: flex;
