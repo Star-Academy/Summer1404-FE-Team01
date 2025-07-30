@@ -1,6 +1,7 @@
 import { Component, EventEmitter, inject, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DashboardService } from '../services/dashboard/dashboard.service';
+import { BookCardModel } from '../../../models/books.model';
 
 @Component({
   selector: 'app-edit-book',
@@ -20,7 +21,7 @@ export class EditBookComponent implements OnChanges {
   enteredGenre: string[] = [''];
   enteredAuthor: string = '';
   enteredPublishData: string = '';
-  enteredPrice: string = '';
+  enteredPrice: number = 0;
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['bookId'] && this.bookId) {
@@ -31,21 +32,24 @@ export class EditBookComponent implements OnChanges {
         this.enteredGenre = book.genre;
         this.enteredAuthor = book.author;
         this.enteredPublishData = book.publishData;
-        this.enteredPrice = book.price.toString();
+        this.enteredPrice = book.price;
       }
     }
   }
 
   onSubmit() {
-    console.log("submit", {
+    const editedBook: BookCardModel = {
       name: this.enteredName,
       image: this.enteredImage,
       genre: this.enteredGenre,
       author: this.enteredAuthor,
       publishData: this.enteredPublishData,
       price: this.enteredPrice
-    });
+    }
 
+    console.log(editedBook)
+
+    this.dashboardService.editBookById(editedBook)
     this.close.emit();
   }
 

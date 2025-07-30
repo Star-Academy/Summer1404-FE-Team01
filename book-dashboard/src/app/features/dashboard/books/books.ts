@@ -24,8 +24,9 @@ export class Books implements OnInit {
     this.isDeleteDialogOpen = true;
     this.selectedBookId = bookId;
   }
+
   ngOnInit() {
     this.books.set(this.bookService.books);
-    console.log(this.books)
   }
+
 }
