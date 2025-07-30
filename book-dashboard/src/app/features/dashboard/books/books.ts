@@ -30,6 +30,14 @@ export class Books implements OnInit {
 
   onColoseDeleteDialog(): void {
     this.isDeleteDialogOpen = false;
-    console.log("closing dialog");
+  }
+
+  deleteBookHandler(): void {
+    this.onColoseDeleteDialog();
+    if(this.selectedBookId) {
+      console.log("deleting book");
+      this.bookService.deleteBookById(this.selectedBookId);
+      this.books.set(this.bookService.books);
+    }
   }
 }

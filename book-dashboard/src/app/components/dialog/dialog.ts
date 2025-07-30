@@ -9,11 +9,12 @@ import { Button } from '../button/button';
 })
 export class Dialog {
   onCloseDialog = output<void>();
-  callBack = input<Function>();
+  callBack = input<() => void>();
   message = input<string>('Are you sure to delete this book ?');
 
   onDelete() {
-    this.callBack();
+    const fn = this.callBack();
+    if (fn) fn();
   }
 
   onClose() {
