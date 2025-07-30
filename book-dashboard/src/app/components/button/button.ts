@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import {ButtonBgColor, buttonType } from '../../models/button.model';
+import { ButtonBgColor, buttonType } from '../../models/button.model';
 
 @Component({
   selector: 'app-button',
@@ -9,8 +9,8 @@ import {ButtonBgColor, buttonType } from '../../models/button.model';
 })
 
 export class Button {
-  isDisable = input<boolean>(false);
-  text = input<string>('click');
-  type = input<buttonType>("button");
-  bgColor= input<ButtonBgColor>('primary');
+  public isDisable = input<boolean>(false);
+  public text = input<string>('click');
+  public type = input<buttonType>("button");
+  public bgColor = input<ButtonBgColor>('primary');
 }

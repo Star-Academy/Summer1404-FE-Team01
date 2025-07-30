@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 
 import { BookCardModel } from '../../../models/books.model';
 import { DashboardService } from '../services/dashboard/dashboard.service';
@@ -12,52 +12,55 @@ import { DashboardService } from '../services/dashboard/dashboard.service';
 
 export class Books implements OnInit {
 
-  constructor(private bookService: DashboardService) { }
+  private readonly bookService: DashboardService = inject(DashboardService)
+  private _books = signal<BookCardModel[]>([])
+  private selectedBookId: number | null = null;
 
-  books = signal<BookCardModel[]>([])
-
-  isEditModalOpen: boolean = false;
-  isDeleteDialogOpen = false;
-  selectedBookId: number | null = null;
+  public isEditModalOpen: boolean = false;
+  public isDeleteDialogOpen = false;
 
 
-  getSelectedId() {
-    if (this.selectedBookId !== undefined) {
+  public get books(): BookCardModel[] {
+    return this._books()
+  }
+
+  public getSelectedId(): number | null {
+    if (this.selectedBookId !== null) {
       return this.selectedBookId
     }
-    return undefined
+    return null
   }
 
   ngOnInit() {
-    this.books.set(this.bookService.books);
+    this._books.set(this.bookService.books);
   }
 
-  onOpenEditModal(bookId: number) {
+  public onOpenEditModal(bookId: number): void {
     this.isEditModalOpen = true
     this.selectedBookId = bookId
   }
 
-  onCloseEditModal() {
+  public onCloseEditModal(): void {
     this.isEditModalOpen = false;
-    this.books.set(this.bookService.books);
+    this._books.set(this.bookService.books);
   }
 
 
-  onOpenDeleteDialog(bookId: number) {
+  public onOpenDeleteDialog(bookId: number): void {
     this.isDeleteDialogOpen = true;
     this.selectedBookId = bookId;
   }
 
-  onColoseDeleteDialog(): void {
+  public onColoseDeleteDialog(): void {
     this.isDeleteDialogOpen = false;
   }
 
-  deleteBookHandler(): void {
+  public deleteBookHandler(): void {
     this.onColoseDeleteDialog();
     if (this.selectedBookId) {
       console.log("deleting book");
       this.bookService.deleteBookById(this.selectedBookId);
-      this.books.set(this.bookService.books);
+      this._books.set(this.bookService.books);
     }
   }
 

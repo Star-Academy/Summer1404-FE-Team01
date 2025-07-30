@@ -1,8 +1,4 @@
 import { Routes } from "@angular/router";
-import { Dashboard } from "./features/dashboard/dashboard";
-import { Books } from "./features/dashboard/books/books";
-import { CreateBook } from "./features/dashboard/create-book/create-book";
-
 
 const routes: Routes = [
     {

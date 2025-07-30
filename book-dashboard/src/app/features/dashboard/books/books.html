@@ -1,5 +1,5 @@
 <article>
-  @for (book of books(); track $index) {
+  @for (book of books; track book.id) {
   <app-book-card
     (onOpenDeleteDialog)="onOpenDeleteDialog($event)"
     (onOpenEditDialog)="onOpenEditModal($event)"
@@ -10,13 +10,10 @@
 
 @if (isDeleteDialogOpen) {
 <app-dialog
+  message="'Are you sure to delete this book ?'"
   [callBack]="deleteBookHandler.bind(this)"
   (onCloseDialog)="onColoseDeleteDialog()"
 ></app-dialog>
 } @if(isEditModalOpen) {
-<app-edit-book
-  [bookId]="selectedBookId"
-  (close)="onCloseEditModal()"
-  [style.z-index]="10000"
-/>
+<app-edit-book [bookId]="getSelectedId()" (close)="onCloseEditModal()" />
 }

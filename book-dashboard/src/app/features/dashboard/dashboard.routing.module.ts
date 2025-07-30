@@ -1,8 +1,7 @@
-import { Component } from "@angular/compiler";
 import { Dashboard } from "./dashboard";
 import { Routes } from "@angular/router";
 import { Books } from "./books/books";
-import { CreateBook } from "./create-book/create-book";
+import { CreateBookFrom } from "./create-book-form/create-book-form";
 
 
 export const routes: Routes = [
@@ -21,7 +20,7 @@ export const routes: Routes = [
             },
             {
                 path: 'create-book-form',
-                component: CreateBook
+                component: CreateBookFrom
             }
         ]
     },

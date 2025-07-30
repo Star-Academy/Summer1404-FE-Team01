@@ -1,4 +1,6 @@
-<img [src]="book().image" [alt]="book().name" />
+<div>
+  <img [src]="book().image" [alt]="book().name" />
+</div>
 <div class="content">
   <h3>{{ book().name }}</h3>
   <p>{{ book().price | currency }}</p>
