@@ -10,7 +10,7 @@
 
 @if (isDeleteDialogOpen) {
 <app-dialog
-  message="'Are you sure to delete this book ?'"
+  message="Are you sure to delete this book ?"
   [callBack]="deleteBookHandler.bind(this)"
   (onCloseDialog)="onColoseDeleteDialog()"
 ></app-dialog>
