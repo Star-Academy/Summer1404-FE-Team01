@@ -23,8 +23,10 @@ export class DashboardService {
   }
 
   editBookById(editedBook: BookCardModel): void {
-    let oldBook = this._books.find(book => editedBook.id === book.id)
-    oldBook = editedBook
+    let index = this._books.findIndex(book => editedBook.id === book.id)
+    if (index !== -1) {
+      this._books[index] = editedBook
+    }
   }
 
   getBookById(bookId: number): BookCardModel | undefined {

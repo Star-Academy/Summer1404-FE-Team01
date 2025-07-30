@@ -16,12 +16,32 @@ export class Books implements OnInit {
 
   books = signal<BookCardModel[]>([])
 
+  isEditModalOpen: boolean = false;
   isDeleteDialogOpen = false;
   selectedBookId: number | null = null;
+
+
+  getSelectedId() {
+    if (this.selectedBookId !== undefined) {
+      return this.selectedBookId
+    }
+    return undefined
+  }
 
   ngOnInit() {
     this.books.set(this.bookService.books);
   }
+
+  onOpenEditModal(bookId: number) {
+    this.isEditModalOpen = true
+    this.selectedBookId = bookId
+  }
+
+  onCloseEditModal() {
+    this.isEditModalOpen = false;
+    this.books.set(this.bookService.books);
+  }
+
 
   onOpenDeleteDialog(bookId: number) {
     this.isDeleteDialogOpen = true;

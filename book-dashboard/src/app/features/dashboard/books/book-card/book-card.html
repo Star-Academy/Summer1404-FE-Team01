@@ -5,13 +5,5 @@
 </div>
 <div id="button_container">
   <app-button [bgColor]="'danger'" [text]="'Delete'" (click)="onDelete()" />
-  <app-button [text]="'Edit'" (click)="setIsOpen()" />
+  <app-button [text]="'Edit'" (click)="onEdit()" />
 </div>
-
-@if(isEditModalOpen) {
-<app-edit-book
-  [bookId]="book().id"
-  (close)="setIsClose()"
-  [style.z-index]="10000"
-/>
-}

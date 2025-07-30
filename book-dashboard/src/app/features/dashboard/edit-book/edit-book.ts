@@ -11,7 +11,7 @@ import { BookCardModel } from '../../../models/books.model';
   styleUrl: './edit-book.scss'
 })
 export class EditBookComponent implements OnChanges {
-  @Input({ required: true }) bookId!: number | undefined;
+  @Input({ required: true }) bookId!: number | null;
   @Output() close = new EventEmitter<void>();
 
   private dashboardService = inject(DashboardService);
@@ -39,6 +39,7 @@ export class EditBookComponent implements OnChanges {
 
   onSubmit() {
     const editedBook: BookCardModel = {
+      id: this.bookId as number,
       name: this.enteredName,
       image: this.enteredImage,
       genre: this.enteredGenre,
