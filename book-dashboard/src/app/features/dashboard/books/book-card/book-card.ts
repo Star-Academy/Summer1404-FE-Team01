@@ -10,6 +10,8 @@ import { BookCardModel } from '../../../../models/books.model';
 export class BookCard {
   book = input.required<BookCardModel>();
   onOpenDeleteDialog = output<number>();
+  onOpenEditDialog = output<number>();
+  isEditModalOpen: boolean = false;
 
   onDelete() {
     const bookId = this.book().id;
@@ -18,5 +20,10 @@ export class BookCard {
     }
   }
 
-  onEdit() { }
+  onEdit() {
+    const bookId = this.book().id
+    if (bookId !== undefined) {
+      this.onOpenEditDialog.emit(bookId)
+    }
+  }
 }

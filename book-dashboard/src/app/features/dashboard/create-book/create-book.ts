@@ -14,6 +14,7 @@ export class CreateBook {
 
   constructor(private fb: FormBuilder, private dashboardService: DashboardService, private router: Router) {
     this.form = this.fb.group({
+      id: [Math.random(), Validators.required],
       name: ['', Validators.required],
       image: ['', Validators.required],
       genre: ['', Validators.required],
