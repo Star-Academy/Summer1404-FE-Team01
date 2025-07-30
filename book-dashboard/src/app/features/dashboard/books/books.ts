@@ -19,14 +19,26 @@ export class Books implements OnInit {
   isDeleteDialogOpen = false;
   selectedBookId: number | null = null;
 
+  ngOnInit() {
+    this.books.set(this.bookService.books);
+  }
+
   onOpenDeleteDialog(bookId: number) {
-    console.log(bookId);
     this.isDeleteDialogOpen = true;
     this.selectedBookId = bookId;
   }
 
-  ngOnInit() {
-    this.books.set(this.bookService.books);
+  onColoseDeleteDialog(): void {
+    this.isDeleteDialogOpen = false;
+  }
+
+  deleteBookHandler(): void {
+    this.onColoseDeleteDialog();
+    if (this.selectedBookId) {
+      console.log("deleting book");
+      this.bookService.deleteBookById(this.selectedBookId);
+      this.books.set(this.bookService.books);
+    }
   }
 
 }

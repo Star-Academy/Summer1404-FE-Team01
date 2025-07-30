@@ -8,12 +8,16 @@ import { Button } from '../button/button';
   styleUrl: './dialog.scss'
 })
 export class Dialog {
-  onCloseDianlog = output<void>();
-  message = input<string>('are you sure to Delete this Book ?');
+  onCloseDialog = output<void>();
+  callBack = input<() => void>();
+  message = input<string>('Are you sure to delete this book ?');
 
-  onClose(){
-    this.onCloseDianlog.emit();
+  onDelete() {
+    const fn = this.callBack();
+    if (fn) fn();
   }
 
-  onSubmit(){}
+  onClose() {
+    this.onCloseDialog.emit();
+  }
 }

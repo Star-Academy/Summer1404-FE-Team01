@@ -1,13 +1,17 @@
-<div>
-  <img [src]="book().image" [alt]="book().name" />
+<img [src]="book().image" [alt]="book().name" />
+<div class="content">
   <h3>{{ book().name }}</h3>
   <p>{{ book().price | currency }}</p>
 </div>
 <div id="button_container">
   <app-button [bgColor]="'danger'" [text]="'Delete'" (click)="onDelete()" />
-  <app-button [text]="'Edit'" (onClick)="setIsOpen()" />
+  <app-button [text]="'Edit'" (click)="setIsOpen()" />
 </div>
 
 @if(isEditModalOpen) {
-<app-edit-book [bookId]="book().id" (close)="setIsClose()" />
+<app-edit-book
+  [bookId]="book().id"
+  (close)="setIsClose()"
+  [style.z-index]="10000"
+/>
 }

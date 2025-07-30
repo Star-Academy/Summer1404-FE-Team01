@@ -15,10 +15,7 @@ export class BookCard {
   onDelete() {
     const bookId = this.book().id;
     if (bookId !== undefined) {
-      console.log('send event from book card');
       this.onOpenDeleteDialog.emit(bookId);
-    } else {
-      console.error('Cannot delete book: ID is missing.');
     }
   }
 

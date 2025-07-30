@@ -19,7 +19,7 @@ export class DashboardService {
   }
 
   deleteBookById(bookId: number): void {
-    this._books.filter(book => book.id !== bookId);
+    this._books = this._books.filter(book => book.id !== bookId);
   }
 
   editBookById(editedBook: BookCardModel): void {

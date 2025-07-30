@@ -2,7 +2,7 @@ import { BookCardModel } from "../../../models/books.model"
 
 const booksData: BookCardModel[] = [
   {
-    id: 0,
+    id: 100,
     name: "The Midnight Library",
     image: "https://picsum.photos/200/300",
     genre: ["Fiction", "Fantasy"],

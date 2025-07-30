@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input } from '@angular/core';
 import {ButtonBgColor, buttonType } from '../../models/button.model';
 
 @Component({
@@ -12,6 +12,5 @@ export class Button {
   isDisable = input<boolean>(false);
   text = input<string>('click');
   type = input<buttonType>("button");
-  onClick = output<void>();
   bgColor= input<ButtonBgColor>('primary');
 }

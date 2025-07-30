@@ -8,5 +8,5 @@
 </article>
 
 @if (isDeleteDialogOpen) {
-<app-dialog (onCloseDialog)="isDeleteDialogOpen = false"></app-dialog>
+<app-dialog [callBack]="deleteBookHandler.bind(this)" (onCloseDialog)="onColoseDeleteDialog()"></app-dialog>
 }
