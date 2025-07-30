@@ -53,40 +53,13 @@ textarea {
 .actions {
   margin: 1rem 0 0;
   display: flex;
-  justify-content: flex-end;
-  gap: 0.25rem;
+  justify-content: flex-start;
+  gap: 1rem;
 }
 
-button {
-  font: inherit;
-  cursor: pointer;
-  border: none;
-  padding: 0.35rem 1.25rem;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-button[type="button"] {
-  color: white;
-  background-color: rgba(152, 166, 179, 0.3);
-}
-
-button[type="button"]:hover,
-button[type="button"]:active {
-  color: #d0c2e1;
-}
-
-button[type="submit"] {
-  background-color: #9c73ca;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  background-color: rgb(61, 153, 245);
-}
-
-button[type="submit"]:hover,
-button[type="submit"]:active {
-  background-color: rgba(61, 153, 245, 0.5);
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+app-button {
+  flex: 1;
+  min-width: 5rem;
 }
 
 @media (min-width: 768px) {

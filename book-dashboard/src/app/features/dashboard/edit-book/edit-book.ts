@@ -2,12 +2,13 @@ import { Component, EventEmitter, inject, Input, Output, OnChanges, SimpleChange
 import { FormsModule } from '@angular/forms';
 import { DashboardService } from '../services/dashboard/dashboard.service';
 import { BookCardModel } from '../../../models/books.model';
+import { Button } from "../../../components/button/button";
 
 @Component({
   selector: 'app-edit-book',
   templateUrl: './edit-book.html',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, Button],
   styleUrl: './edit-book.scss'
 })
 export class EditBookComponent implements OnChanges {

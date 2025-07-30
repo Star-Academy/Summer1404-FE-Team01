@@ -37,9 +37,14 @@
       <input type="number" id="price" name="price" [(ngModel)]="enteredPrice" />
     </p>
 
-    <p class="actions">
-      <button type="button" (click)="onCancle()">Cancel</button>
-      <button type="submit">Edit</button>
-    </p>
+    <div class="actions">
+      <app-button
+        bgColor="secondary"
+        text="Cancle"
+        type="button"
+        (click)="onCancle()"
+      ></app-button>
+      <app-button bgColor="primary" text="Edit" type="submit"></app-button>
+    </div>
   </form>
 </dialog>
