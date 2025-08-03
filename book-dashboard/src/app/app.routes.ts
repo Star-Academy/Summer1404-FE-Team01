@@ -4,11 +4,11 @@ const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: "dashboard"
+        redirectTo: "book"
     },
     {
         title: 'Dashboard',
-        path: 'dashboard',
+        path: 'book',
         loadChildren: () => import("./features/dashboard/dashboard.module").then(m => m.DashboardModule),
     }
 

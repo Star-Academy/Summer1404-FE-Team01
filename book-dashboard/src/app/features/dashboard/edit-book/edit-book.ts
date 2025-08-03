@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DashboardService } from '../services/dashboard/dashboard.service';
+import { BookService } from '../services/book/book.service';
 import { BookCardModel } from '../../../models/books.model';
 import { Button } from "../../../components/button/button";
 
@@ -15,7 +15,7 @@ export class EditBookComponent implements OnChanges {
   @Input({ required: true }) bookId!: number | null;
   @Output() close = new EventEmitter<void>();
 
-  private dashboardService = inject(DashboardService);
+  private dashboardService = inject(BookService);
 
   enteredName: string = '';
   enteredImage: string = '';

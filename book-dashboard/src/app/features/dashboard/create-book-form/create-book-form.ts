@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DashboardService } from '../services/dashboard/dashboard.service';
+import { BookService } from '../services/book/book.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ export class CreateBookFrom implements OnInit {
   form!: FormGroup;
 
   private readonly fb: FormBuilder = inject(FormBuilder);
-  private readonly dashboardService: DashboardService = inject(DashboardService)
+  private readonly dashboardService: BookService = inject(BookService)
   private readonly router: Router = inject(Router);
 
   ngOnInit(): void {

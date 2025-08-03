@@ -3,7 +3,7 @@ name: Build and Deploy Angular to GitHub Pages
 on:
   push:
     branches:
-      - project/bookStore-dashboard
+      - project/bookStore-book
 
 permissions:
   contents: write
@@ -22,16 +22,16 @@ jobs:
           node-version: '20.19.0'
 
       - name: Install Dependencies
-        working-directory: ./book-dashboard
+        working-directory: ./book-book
         run: npm ci
 
       - name: Build Angular App
-        working-directory: ./book-dashboard
-        run: npm run build -- --configuration production --base-href /book-dashboard/
+        working-directory: ./book-book
+        run: npm run build -- --configuration production --base-href /book-book/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./book-dashboard/dist/book-dashboard
+          publish_dir: ./book-book/dist/book-book
           publish_branch: gh-pages

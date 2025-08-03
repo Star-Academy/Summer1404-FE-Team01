@@ -7,7 +7,7 @@ import { Sidebar } from "../sidebar/sidebar";
 import { Books } from "./books/books";
 import { CommonModule, CurrencyPipe } from "@angular/common";
 import { BookCard } from "./books/book-card/book-card";
-import { DashboardService } from "./services/dashboard/dashboard.service";
+import { BookService } from "./services/book/book.service";
 import { routes } from "./dashboard.routing.module";
 import { Button } from "../../components/button/button";
 import { ReactiveFormsModule } from "@angular/forms";
@@ -22,6 +22,6 @@ import { EditBookComponent } from "./edit-book/edit-book";
         Footer, Sidebar,
         CommonModule, Button,
         ReactiveFormsModule, Dialog, EditBookComponent],
-    providers: [DashboardService]
+    providers: [BookService]
 })
 export class DashboardModule { }

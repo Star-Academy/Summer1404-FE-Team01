@@ -3,7 +3,7 @@ import { BookCardModel } from '../../../../models/books.model';
 import booksData from '../../books/booksData';
 
 @Injectable()
-export class DashboardService {
+export class BookService {
   private _books: BookCardModel[] = [];
 
   constructor() {

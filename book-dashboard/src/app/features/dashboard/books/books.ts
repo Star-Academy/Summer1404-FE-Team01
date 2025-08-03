@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 
 import { BookCardModel } from '../../../models/books.model';
-import { DashboardService } from '../services/dashboard/dashboard.service';
+import { BookService } from '../services/book/book.service';
 
 @Component({
   selector: 'app-books',
@@ -12,7 +12,7 @@ import { DashboardService } from '../services/dashboard/dashboard.service';
 
 export class Books implements OnInit {
 
-  private readonly bookService: DashboardService = inject(DashboardService)
+  private readonly bookService: BookService = inject(BookService)
   private _books = signal<BookCardModel[]>([])
   private selectedBookId: number | null = null;
 
