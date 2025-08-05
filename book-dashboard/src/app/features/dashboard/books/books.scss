@@ -1,0 +1,7 @@
+article {
+  padding: 1rem;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 0.9fr));
+  gap: 1rem;
+}

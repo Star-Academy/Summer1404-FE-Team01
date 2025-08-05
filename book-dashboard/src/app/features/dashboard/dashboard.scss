@@ -1,0 +1,14 @@
+@import "../../../styles.global";
+
+:host {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+#container {
+  flex: 1;
+  display: flex;
+  overflow-y: scroll;
+  flex-direction: column;
+}

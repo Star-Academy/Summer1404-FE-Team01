@@ -1,0 +1,14 @@
+@mixin boldCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+@mixin glassyStyle {
+  flex-shrink: 0;
+  background-color: var(--color-surface);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}

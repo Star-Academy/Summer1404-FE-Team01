@@ -1,0 +1,11 @@
+<div>
+  <img [src]="book().image" [alt]="book().name" />
+</div>
+<div class="content">
+  <h3>{{ book().name }}</h3>
+  <p>{{ book().price | currency }}</p>
+</div>
+<div id="button_container">
+  <app-button [bgColor]="'danger'" [text]="'Delete'" (click)="onDelete()" />
+  <app-button [text]="'Edit'" (click)="onEdit()" />
+</div>
