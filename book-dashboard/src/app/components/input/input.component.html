@@ -1,0 +1,12 @@
+<div [style.flex-direction]="flexDirection()" [style.gap]="gap()+'rem'" class="input-container">
+  @if (label()) {
+    <label [title]="title() +'_label'"
+           [for]="id()"
+           class="input-container__input-label"></label>
+  }
+  <input [type]="type()"
+         [placeholder]="placeHolder()"
+         [title]="title()"
+         [id]="id()"
+         class="input-contُainer__input"/>
+</div>
