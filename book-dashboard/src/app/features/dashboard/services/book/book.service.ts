@@ -1,10 +1,13 @@
-import { Injectable } from '@angular/core';
-import { BookCardModel } from '../../../../models/books.model';
+import {Injectable} from '@angular/core';
+import {BookCardModel} from '../../../../models/books.model';
 import booksData from '../../books/booksData';
+import {Observable, Subject} from 'rxjs';
 
 @Injectable()
 export class BookService {
   private _books: BookCardModel[] = [];
+
+  public books$: Subject<BookCardModel[]> = new Subject<BookCardModel[]>();
 
   constructor() {
     this._books = booksData;

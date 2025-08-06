@@ -1,7 +1,7 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 
-import { BookCardModel } from '../../../models/books.model';
-import { BookService } from '../services/book/book.service';
+import {BookCardModel} from '../../../models/books.model';
+import {BookService} from '../services/book/book.service';
 
 @Component({
   selector: 'app-books',
@@ -33,6 +33,11 @@ export class Books implements OnInit {
 
   ngOnInit() {
     this._books.set(this.bookService.books);
+    this.bookService.books$.subscribe({
+      next: books => {
+        this._books.set(books);
+      }
+    })
   }
 
   public onOpenEditModal(bookId: number): void {

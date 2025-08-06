@@ -1,5 +1,6 @@
 <!--filter-button-->
 <div id="container">
   <div>filter</div>
-  <app-input style="height: 2.5rem" id="searchInput" fontSize="1" inputId="books-search" placeholder="search books..."/>
+  <app-input (outputValue)="filterBooksByTitle($event)" style="height: 2.5rem" id="searchInput" fontSize="1"
+             inputId="books-search" placeholder="search books..."/>
 </div>
