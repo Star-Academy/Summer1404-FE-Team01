@@ -1,12 +1,25 @@
-<div [style.flex-direction]="flexDirection()" [style.gap]="gap()+'rem'" class="input-container">
+<div
+  [style.flex-direction]="flexDirection()"
+  [style.gap]="gap() + 'rem'"
+  class="input-container"
+>
   @if (label()) {
-    <label [title]="title() +'_label'"
-           [for]="id()"
-           class="input-container__input-label"></label>
+    <label
+      [style.font-size]="fontSize()+'rem'"
+      [title]="title() + '_label'"
+      [for]="inputId()"
+      class="input-container__label"
+    >
+      {{ label() }}
+    </label>
   }
-  <input [type]="type()"
-         [placeholder]="placeHolder()"
-         [title]="title()"
-         [id]="id()"
-         class="input-contُainer__input"/>
+
+  <input
+    (input)="onHandleInputChange($event)"
+    [type]="type()"
+    [placeholder]="placeholder()"
+    [title]="title()"
+    [id]="inputId()"
+    class="input-container__input"
+  />
 </div>

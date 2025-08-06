@@ -1,4 +1,4 @@
-export type Input =
+export type InputType =
     | 'text'
     | 'number'
     | 'email'
