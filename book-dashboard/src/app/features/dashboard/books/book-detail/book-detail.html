@@ -1,0 +1,13 @@
+<div>
+  <img [src]="_book()?.image" [alt]="_book()?.name + 'image'">
+  <div>
+    <p>{{ _book()?.name }}</p>
+    <p>{{ _book()?.author }}</p>
+    <span>{{ _book()?.price }}</span>
+    @for (genre of _book()?.genre; track $index) {
+      <span>{{ genre }}, </span>
+    }
+    <span>{{ _book()?.price }}</span>
+    <p>{{ _book()?.publishData }}</p>
+  </div>
+</div>
