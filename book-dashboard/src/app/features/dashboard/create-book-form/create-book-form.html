@@ -1,35 +1,41 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="form" class="book-form">
-  <div>
-    <label for="name">Book Name</label>
-    <input formControlName="name" type="text" id="name" />
+<form
+  (ngSubmit)="onSubmit()"
+  [formGroup]="form"
+  class="book-form"
+>
+  <h2 class="book-form__title">Create New Book</h2>
+  <div class="book-form__field">
+    <label for="name" class="book-form__label">Book Name</label>
+    <input class="book-form__input" formControlName="name" type="text" id="name" />
   </div>
 
-  <div>
-    <label for="image">Image URL</label>
-    <input formControlName="image" type="text" id="image" />
+  <div class="book-form__field">
+    <label for="image" class="book-form__label">Image URL</label>
+    <input class="book-form__input" formControlName="image" type="text" id="image" />
   </div>
 
-  <div>
-    <label for="genre">Genre</label>
-    <input formControlName="genre" type="text" id="genre" />
+  <div class="book-form__field">
+    <label for="genre" class="book-form__label">Genre</label>
+    <input class="book-form__input" formControlName="genre" type="text" id="genre" />
   </div>
 
-  <div>
-    <label for="author">Author</label>
-    <input formControlName="author" type="text" id="author" />
+  <div class="book-form__field">
+    <label for="author" class="book-form__label">Author</label>
+    <input class="book-form__input" formControlName="author" type="text" id="author" />
   </div>
 
-  <div>
-    <label for="publishData">Publish Date</label>
-    <input formControlName="publishData" type="date" id="publishData" />
+  <div class="book-form__field">
+    <label for="publishData" class="book-form__label">Publish Date</label>
+    <input class="book-form__input" formControlName="publishData" type="date" id="publishData" />
   </div>
 
-  <div>
-    <label for="price">Price</label>
-    <input formControlName="price" type="number" id="price" />
+  <div class="book-form__field">
+    <label for="price" class="book-form__label">Price</label>
+    <input class="book-form__input" formControlName="price" type="number" id="price" />
   </div>
 
   <app-button
+    class="book-form__button"
     [type]="'submit'"
     [isDisable]="form.invalid"
     text="Add Book"

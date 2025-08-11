@@ -7,40 +7,41 @@
 
 .book-form {
   background-color: rgba(128, 128, 128, 0.3);
-  padding: 24px;
-  border-radius: 12px;
-  width: 50%;
-  max-width: 400px;
-  min-width: 15rem;
-  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  width: 40%;
+  min-width: 20rem;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin: 3rem auto;
-}
 
-.book-form div {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
-.book-form label {
-  font-weight: bold;
-  color: var(--color-text-primary);
-}
+  &__label {
+    font-weight: bold;
+    color: var(--color-text-primary);
+  }
 
-.book-form input {
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
-  background-color: #fff;
-  transition: border-color 0.2s ease;
-}
+  &__input {
+    padding: .6rem 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    background-color: #fff;
+    transition: border-color 0.2s ease;
 
-.book-form input:focus {
-  border-color: #555;
-  outline: none;
+    &:focus {
+      border-color: #555;
+      outline: none;
+    }
+  }
+
+  &__button {
+    margin-top: 1rem;
+  }
 }
