@@ -2,13 +2,13 @@
 
 :host {
   width: 100%;
-  min-height: 100vh;
   display: flex;
 }
 
 .dashboard {
   flex: 1;
   display: flex;
-  overflow-y: auto;
   flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
