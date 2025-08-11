@@ -6,12 +6,8 @@
   background-color: var(--color-surface);
   border-radius: 1rem;
 
-  // animation: come-in 1s linear forwards;
-  // animation-timeline: view();
-  // animation-range-start: 0rem;
-  // animation-range-end: 20rem;
-
   div > img {
+    cursor: pointer;
     border-radius: 1rem;
     min-height: 15rem;
     height: 15rem;

@@ -18,12 +18,10 @@ export const routes: Routes = [
       {
         path: 'books',
         component: Books,
-        children: [
-          {
-            path: ':bookId',
-            component: BookDetail,
-          }
-        ]
+      },
+      {
+        path: 'books/:bookId',
+        component: BookDetail,
       },
       {
         path: 'create-book-form',
