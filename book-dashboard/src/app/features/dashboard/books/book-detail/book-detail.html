@@ -1,16 +1,17 @@
 <div class="book-detail">
-  <img [src]="_book()?.image" [alt]="_book()?.name + ' image'">
-  <div class="book-detail__info">
-    <p class="book-detail__info-title">{{ _book()?.name }}</p>
-    <p class="book-detail__info-author">{{ _book()?.author }}</p>
-    <span class="book-detail__info-price">{{ _book()?.price }}</span>
+  <img class="book-detail__image" [src]="_book()?.image" [alt]="_book()?.name + ' image'">
 
-    <div class="book-detail__info-genres">
+  <div class="book-detail__info">
+    <p class="book-detail__title">{{ _book()?.name }}</p>
+    <p class="book-detail__author">{{ _book()?.author }}</p>
+    <span class="book-detail__price">{{ _book()?.price }}</span>
+
+    <div class="book-detail__genres">
       @for (genre of _book()?.genre; track $index) {
-        <span>{{ genre }}</span>
+        <span class="book-detail__genre">{{ genre }}</span>
       }
     </div>
 
-    <p class="book-detail__info-publish">{{ _book()?.publishData }}</p>
+    <p class="book-detail__publish">{{ _book()?.publishData }}</p>
   </div>
 </div>
