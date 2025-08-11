@@ -18,11 +18,13 @@ export class BookService {
   }
 
   addBook(book: BookCardModel) {
-    this._books.push(book)
+    this._books.push(book);
+    this.emitBooks();
   }
 
   deleteBookById(bookId: number): void {
     this._books = this._books.filter(book => book.id !== bookId);
+    this.emitBooks();
   }
 
   editBookById(editedBook: BookCardModel): void {
@@ -30,9 +32,14 @@ export class BookService {
     if (index !== -1) {
       this._books[index] = editedBook
     }
+    this.emitBooks();
   }
 
   getBookById(bookId: number): BookCardModel | undefined {
     return this._books.find(book => book.id === bookId);
+  }
+
+  emitBooks() : void{
+    this.books$.next(this._books);
   }
 }
