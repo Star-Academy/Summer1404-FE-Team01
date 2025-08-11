@@ -5,10 +5,10 @@ import { RouterModule, RouterOutlet } from "@angular/router";
 import routes from "./app.routes";
 
 
-
 @NgModule({
-    declarations: [App],
-    bootstrap: [App],
-    imports: [BrowserModule, RouterModule.forRoot(routes), RouterOutlet],
+  declarations: [App],
+  bootstrap: [App],
+  imports: [BrowserModule, RouterModule.forRoot(routes), RouterOutlet],
 })
-export class AppModule { }
+export class AppModule {
+}

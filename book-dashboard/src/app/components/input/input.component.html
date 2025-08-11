@@ -1,0 +1,25 @@
+<div
+  [style.flex-direction]="flexDirection()"
+  [style.gap]="gap() + 'rem'"
+  class="input-container"
+>
+  @if (label()) {
+    <label
+      [style.font-size]="fontSize()+'rem'"
+      [title]="title() + '_label'"
+      [for]="inputId()"
+      class="input-container__label"
+    >
+      {{ label() }}
+    </label>
+  }
+
+  <input
+    (input)="onHandleInputChange($event)"
+    [type]="type()"
+    [placeholder]="placeholder()"
+    [title]="title()"
+    [id]="inputId()"
+    class="input-container__input"
+  />
+</div>

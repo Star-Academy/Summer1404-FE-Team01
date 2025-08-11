@@ -8,6 +8,7 @@
   /* -- BACKGROUND & SURFACE -- */
   /* Use for the main body background */
   --color-background: hsl(220, 25%, 10%);
+  --color-background-rgb: 19, 23, 32;
 
   /* Use for cards, modals, and sidebars with the blur effect */
   --color-surface: hsla(220, 20%, 18%, 0.75);
@@ -25,9 +26,9 @@
 
   /* -- TEXT COLORS -- */
   --color-text-primary: hsl(
-    210,
-    20%,
-    95%
+      210,
+      20%,
+      95%
   ); /* For headings and important text */
   --color-text-secondary: hsl(210, 15%, 65%); /* For labels and paragraphs */
   --color-text-accent: hsl(210, 20%, 95%); /* For text on primary buttons */
