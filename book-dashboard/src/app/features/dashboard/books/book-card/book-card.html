@@ -1,11 +1,14 @@
-<div>
-  <img [routerLink]="['/dashboard', 'books', book()?.id]" [src]="book().image" [alt]="book().name" />
-</div>
-<div class="content">
-  <h3>{{ book().name }}</h3>
-  <p>{{ book().price | currency }}</p>
-</div>
-<div id="button_container">
-  <app-button [bgColor]="'danger'" [text]="'Delete'" (click)="onDelete()" />
-  <app-button [text]="'Edit'" (click)="onEdit()" />
+<div class="card">
+  <div class="card__image">
+    <img [routerLink]="['/dashboard', 'books', book()?.id]" [src]="book().image" [alt]="book().name"/>
+  </div>
+  <div class="card__text-content">
+    <h3 class="card__text-content__title">{{ book().name }}</h3>
+    <p class="card__text-content__price">{{ book().price | currency }}</p>
+  </div>
+  <div id="card__buttons" class="card__buttons">
+    <app-button [bgColor]="'danger'" [text]="'Delete'" (click)="onDelete()"/>
+    <app-button [text]="'Edit'" (click)="onEdit()"/>
+  </div>
+
 </div>
