@@ -1,19 +1,22 @@
 <article>
   @for (book of books; track book.id) {
-  <app-book-card
-    (onOpenDeleteDialog)="onOpenDeleteDialog($event)"
-    (onOpenEditDialog)="onOpenEditModal($event)"
-    [book]="book"
-  />
+    <app-book-card
+      (onOpenDeleteDialog)="onOpenDeleteDialog($event)"
+      (onOpenEditDialog)="onOpenEditModal($event)"
+      [book]="book"
+    />
   }
 </article>
 
 @if (isDeleteDialogOpen) {
-<app-dialog
-  message="Are you sure to delete this book ?"
-  [callBack]="deleteBookHandler.bind(this)"
-  (onCloseDialog)="onColoseDeleteDialog()"
-></app-dialog>
-} @if(isEditModalOpen) {
-<app-edit-book [bookId]="getSelectedId()" (close)="onCloseEditModal()" />
+  <app-dialog
+    message="Are you sure to delete this book ?"
+    [callBack]="deleteBookHandler.bind(this)"
+    (onCloseDialog)="onColoseDeleteDialog()"
+  ></app-dialog>
 }
+@if (isEditModalOpen) {
+  <app-edit-book [bookId]="getSelectedId()" (close)="onCloseEditModal()"/>
+}
+
+<router-outlet></router-outlet>
