@@ -1,6 +1,3 @@
-:host {
-}
-
 button {
   width: 100%;
   background-color: var(--color-primary);
@@ -11,6 +8,7 @@ button {
   border: none;
   outline: none;
   color: var(--color-text-primary);
+
   &:hover {
     cursor: pointer;
     filter: contrast(200%);

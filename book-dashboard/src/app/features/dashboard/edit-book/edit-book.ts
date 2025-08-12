@@ -49,8 +49,6 @@ export class EditBookComponent implements OnChanges {
       price: this.enteredPrice
     }
 
-    console.log(editedBook)
-
     this.dashboardService.editBookById(editedBook)
     this.close.emit();
   }

@@ -1,5 +1,16 @@
-<h3>{{ message() }}</h3>
-<div id="button_container">
-  <app-button [bgColor]="'danger'" [text]="'Delete'" (click)="onDelete()" />
-  <app-button [text]="'Cancle'" (click)="onClose()" />
+<div class="modal">
+  <h3 class="modal__title">{{ message() }}</h3>
+  <div class="modal__buttons">
+    <app-button
+      class="modal__button modal__button--danger"
+      [bgColor]="'danger'"
+      [text]="'Delete'"
+      (click)="onDelete()"
+    />
+    <app-button
+      class="modal__button"
+      [text]="'Cancel'"
+      (click)="onClose()"
+    />
+  </div>
 </div>
