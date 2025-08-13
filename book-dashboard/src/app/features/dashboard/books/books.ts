@@ -11,7 +11,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
   standalone: false
 })
 
-export class Books implements OnInit {
+export class Books {
 
   private readonly bookService: BookService = inject(BookService)
   private _books = toSignal(this.bookService.books$, { initialValue: this.bookService.booksData });
@@ -30,12 +30,6 @@ export class Books implements OnInit {
     }
     return null
   }
-
-  ngOnInit(): void {
-    this.bookService.fetchBooks();
-    console.log(this._books());
-  }
-
 
   public onOpenEditModal(bookId: number): void {
     this.isEditModalOpen = true
@@ -61,12 +55,7 @@ export class Books implements OnInit {
 
     this.bookService.deleteBookById(this.selectedBookId).subscribe({
       next: () => {
-        console.log(`Book with ID ${this.selectedBookId} deleted successfully`);
-        this.bookService.fetchBooks();
         this.onColoseDeleteDialog();
-      },
-      error: (err) => {
-        console.error("Error deleting book:", err);
       }
     });
   }

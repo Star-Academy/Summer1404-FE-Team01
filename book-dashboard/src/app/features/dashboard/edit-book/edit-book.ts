@@ -28,18 +28,21 @@ export class EditBookComponent implements OnChanges {
     if (changes['bookId'] && this.bookId !== null) {
       this.dashboardService.getBookById(this.bookId).subscribe({
         next: (book) => {
-          this.enteredName = book.name;
-          this.enteredImage = book.image;
-          this.enteredGenre = Array.isArray(book.genre)
-            ? book.genre
-            : this.safeParseGenre(book.genre);
-          this.enteredAuthor = book.author;
-          this.enteredPublishData = book.publishData;
-          this.enteredPrice = book.price;
-        },
-        error: (err) => console.error('Error loading book', err)
+          this.initializeFormValues(book)
+        }
       });
     }
+  }
+
+  private initializeFormValues(book: BookCardModel): void {
+    this.enteredName = book.name;
+    this.enteredImage = book.image;
+    this.enteredGenre = Array.isArray(book.genre)
+      ? book.genre
+      : this.safeParseGenre(book.genre);
+    this.enteredAuthor = book.author;
+    this.enteredPublishData = book.publishData;
+    this.enteredPrice = book.price;
   }
 
   private safeParseGenre(value: any): string[] {
@@ -66,10 +69,8 @@ export class EditBookComponent implements OnChanges {
     this.dashboardService.replaceBook(this.bookId, editedBook)
       .subscribe({
         next: () => {
-          this.dashboardService.fetchBooks();
           this.close.emit();
-        },
-        error: (err) => console.error('Error updating book', err)
+        }
       });
   }
 

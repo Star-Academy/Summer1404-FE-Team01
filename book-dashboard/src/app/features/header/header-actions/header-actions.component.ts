@@ -14,7 +14,6 @@ export class HeaderActionsComponent {
   private readonly bookService: BookService = inject(BookService)
 
   filterBooksByTitle(title: string): void {
-    const filteredBooks = this.bookService.booksData.filter(book => book.name.toLowerCase().startsWith(title.toLowerCase()))
-    this.bookService.books$.next(filteredBooks);
+    this.bookService.filterBooksByTitle(title);
   }
 }
