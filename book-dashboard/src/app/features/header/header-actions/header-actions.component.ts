@@ -1,6 +1,6 @@
-import {Component, inject} from '@angular/core';
-import {InputComponent} from '../../../components/input/input.component';
-import {BookService} from '../../dashboard/services/book/book.service';
+import { Component, inject } from '@angular/core';
+import { InputComponent } from '../../../components/input/input.component';
+import { BookService } from '../../dashboard/services/book/book.service';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class HeaderActionsComponent {
   private readonly bookService: BookService = inject(BookService)
 
   filterBooksByTitle(title: string): void {
-    const filteredBooks  = this.bookService.books.filter(book => book.name.toLowerCase().startsWith(title.toLowerCase()))
+    const filteredBooks = this.bookService.booksData.filter(book => book.name.toLowerCase().startsWith(title.toLowerCase()))
     this.bookService.books$.next(filteredBooks);
   }
 }

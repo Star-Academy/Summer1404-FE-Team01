@@ -17,40 +17,60 @@ export class EditBookComponent implements OnChanges {
 
   private dashboardService = inject(BookService);
 
-  enteredName: string = '';
-  enteredImage: string = '';
-  enteredGenre: string[] = [''];
-  enteredAuthor: string = '';
-  enteredPublishData: string = '';
-  enteredPrice: number = 0;
+  enteredName = '';
+  enteredImage = '';
+  enteredGenre: string[] = [];
+  enteredAuthor = '';
+  enteredPublishData = '';
+  enteredPrice = 0;
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['bookId'] && this.bookId) {
-      const book = this.dashboardService.getBookById(this.bookId);
-      if (book) {
-        this.enteredName = book.name;
-        this.enteredImage = book.image;
-        this.enteredGenre = book.genre;
-        this.enteredAuthor = book.author;
-        this.enteredPublishData = book.publishData;
-        this.enteredPrice = book.price;
-      }
+    if (changes['bookId'] && this.bookId !== null) {
+      this.dashboardService.getBookById(this.bookId).subscribe({
+        next: (book) => {
+          this.enteredName = book.name;
+          this.enteredImage = book.image;
+          this.enteredGenre = Array.isArray(book.genre)
+            ? book.genre
+            : this.safeParseGenre(book.genre);
+          this.enteredAuthor = book.author;
+          this.enteredPublishData = book.publishData;
+          this.enteredPrice = book.price;
+        },
+        error: (err) => console.error('Error loading book', err)
+      });
+    }
+  }
+
+  private safeParseGenre(value: any): string[] {
+    try {
+      return JSON.parse(value);
+    } catch {
+      return [];
     }
   }
 
   onSubmit() {
+    if (this.bookId === null) return;
+
     const editedBook: BookCardModel = {
-      id: this.bookId as number,
+      id: this.bookId,
       name: this.enteredName,
       image: this.enteredImage,
       genre: this.enteredGenre,
       author: this.enteredAuthor,
       publishData: this.enteredPublishData,
       price: this.enteredPrice
-    }
+    };
 
-    this.dashboardService.editBookById(editedBook)
-    this.close.emit();
+    this.dashboardService.replaceBook(this.bookId, editedBook)
+      .subscribe({
+        next: () => {
+          this.dashboardService.fetchBooks();
+          this.close.emit();
+        },
+        error: (err) => console.error('Error updating book', err)
+      });
   }
 
   onCancle() {

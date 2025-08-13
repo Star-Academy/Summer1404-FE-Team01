@@ -31,10 +31,17 @@ export class CreateBookFrom implements OnInit {
   public onSubmit() {
     if (this.form.invalid) return;
 
-    const formSnapShot = this.form;
+    const formSnapShot = this.form.value;
 
-    this.dashboardService.addBook(formSnapShot.value);
-    this.form.reset();
-    this.router.navigateByUrl("/dashboard/books")
+    this.dashboardService.addBook(formSnapShot).subscribe({
+      next: () => {
+        this.form.reset();
+        this.router.navigateByUrl("/dashboard/books");
+      },
+      error: (err) => {
+        console.error('Error adding book', err);
+      }
+    });
   }
+
 }
