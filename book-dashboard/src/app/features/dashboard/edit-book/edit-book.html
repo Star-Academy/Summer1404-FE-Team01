@@ -1,50 +1,46 @@
-<div class="backdrop" (click)="onCancle()"></div>
-<dialog open>
-  <h2>Add Book</h2>
-  <form (ngSubmit)="onSubmit()">
-    <p>
-      <label for="name">Book Name</label>
-      <input type="text" id="name" name="name" [(ngModel)]="enteredName" />
+<div class="book-modal__backdrop" (click)="onCancle()"></div>
+<dialog class="book-modal" open>
+  <h2 class="book-modal__title">Edit Book</h2>
+  <form class="book-modal__form" (ngSubmit)="onSubmit()">
+    <p class="book-modal__field">
+      <label class="book-modal__label" for="name">Book Name</label>
+      <input class="book-modal__input" type="text" id="name" name="name" [(ngModel)]="enteredName" />
     </p>
-    <p>
-      <label for="image">Image URL</label>
-      <input type="text" id="image" name="image" [(ngModel)]="enteredImage" />
+    <p class="book-modal__field">
+      <label class="book-modal__label" for="image">Image URL</label>
+      <input class="book-modal__input" type="text" id="image" name="image" [(ngModel)]="enteredImage" />
     </p>
-    <p>
-      <label for="genre">Genre</label>
-      <input type="text" id="genre" name="genre" [(ngModel)]="enteredGenre" />
+    <p class="book-modal__field">
+      <label class="book-modal__label" for="genre">Genre</label>
+      <input class="book-modal__input" type="text" id="genre" name="genre" [(ngModel)]="enteredGenre" />
     </p>
-    <p>
-      <label for="author">Author</label>
-      <input
-        type="text"
-        id="author"
-        name="author"
-        [(ngModel)]="enteredAuthor"
-      />
+    <p class="book-modal__field">
+      <label class="book-modal__label" for="author">Author</label>
+      <input class="book-modal__input" type="text" id="author" name="author" [(ngModel)]="enteredAuthor" />
     </p>
-    <p>
-      <label for="publishData">Publish Date</label>
-      <input
-        type="date"
-        id="publishData"
-        name="publishData"
-        [(ngModel)]="enteredPublishData"
-      />
+    <p class="book-modal__field">
+      <label class="book-modal__label" for="publishData">Publish Date</label>
+      <input class="book-modal__input" type="date" id="publishData" name="publishData" [(ngModel)]="enteredPublishData" />
     </p>
-    <p>
-      <label for="price">Price</label>
-      <input type="number" id="price" name="price" [(ngModel)]="enteredPrice" />
+    <p class="book-modal__field">
+      <label class="book-modal__label" for="price">Price</label>
+      <input class="book-modal__input" type="number" id="price" name="price" [(ngModel)]="enteredPrice" />
     </p>
 
-    <div class="actions">
+    <div class="book-modal__actions">
       <app-button
+        class="book-modal__button"
         bgColor="secondary"
         text="Cancle"
         type="button"
         (click)="onCancle()"
       ></app-button>
-      <app-button bgColor="primary" text="Edit" type="submit"></app-button>
+      <app-button
+        class="book-modal__button"
+        bgColor="primary"
+        text="Edit"
+        type="submit"
+      ></app-button>
     </div>
   </form>
 </dialog>

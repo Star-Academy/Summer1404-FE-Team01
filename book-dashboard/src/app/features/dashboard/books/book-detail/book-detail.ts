@@ -1,8 +1,7 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
-import {BookCard} from '../book-card/book-card';
-import {BookCardModel} from '../../../../models/books.model';
-import {ActivatedRoute, Router} from '@angular/router';
-import {BookService} from '../../services/book/book.service';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { BookCardModel } from '../../../../models/books.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BookService } from '../../services/book/book.service';
 
 @Component({
   selector: 'app-book-detail',
@@ -19,13 +18,13 @@ export class BookDetail implements OnInit {
 
   ngOnInit(): void {
     this.bookId = this.getBookIdFromUrl();
-    this.setBook(this.getBookInformation());
-    if (this._book()) {
-      return;
+    if (this.bookId) {
+      this.getBookInformation();
     } else {
       this.redirectToBooksPage();
     }
   }
+
 
   redirectToBooksPage(): void {
     this.router.navigate(['/dashboard', 'books']);
@@ -35,9 +34,13 @@ export class BookDetail implements OnInit {
     return this.activatedRoute.snapshot.paramMap.get("bookId");
   }
 
-  getBookInformation(): BookCardModel | undefined {
-    return this.bookService.getBookById(Number(this.bookId));
+  getBookInformation(): void {
+    this.bookService.getBookById(Number(this.bookId)).subscribe({
+      next: (book) => this.setBook(book),
+      error: () => this.redirectToBooksPage()
+    });
   }
+
 
   setBook(book: BookCardModel | undefined): void {
     this._book.set(book);

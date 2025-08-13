@@ -1,38 +1,64 @@
-import {Injectable} from '@angular/core';
-import {BookCardModel} from '../../../../models/books.model';
-import booksData from '../../books/booksData';
-import {Observable, Subject} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BookCardModel } from '../../../../models/books.model';
 
 @Injectable()
 export class BookService {
-  private _books: BookCardModel[] = [];
+  private readonly _URL_ = 'http://localhost:5000/books';
+  private _booksData: BookCardModel[] = [];
+  private readonly _books$ = new BehaviorSubject<BookCardModel[]>([]);
+  public readonly books$ = this._books$.asObservable();
 
-  public books$: Subject<BookCardModel[]> = new Subject<BookCardModel[]>();
-
-  constructor() {
-    this._books = booksData;
+  constructor(private http: HttpClient) {
+    this.refresh();
   }
 
-  get books() {
-    return this._books
+  refresh(): void {
+    this.http.get<BookCardModel[]>(this._URL_)
+      .subscribe(books => {
+        this._booksData = books;
+        this._books$.next(books)
+      });
   }
 
-  addBook(book: BookCardModel) {
-    this._books.push(book)
+  get booksData(): BookCardModel[] {
+    return this._books$.value;
   }
 
-  deleteBookById(bookId: number): void {
-    this._books = this._books.filter(book => book.id !== bookId);
+  getBookById(bookId: number): Observable<BookCardModel> {
+    return this.http.get<BookCardModel>(`${this._URL_}/${bookId}`);
   }
 
-  editBookById(editedBook: BookCardModel): void {
-    let index = this._books.findIndex(book => editedBook.id === book.id)
-    if (index !== -1) {
-      this._books[index] = editedBook
+  addBook(book: BookCardModel): Observable<BookCardModel> {
+    return this.http.post<BookCardModel>(this._URL_, book)
+      .pipe(tap(() => this.refresh()));
+  }
+
+  replaceBook(bookId: number, book: BookCardModel): Observable<BookCardModel> {
+    return this.http.put<BookCardModel>(`${this._URL_}/${bookId}`, book)
+      .pipe(tap(() => this.refresh()));
+  }
+
+  updateBookPartial(bookId: number, partialBook: Partial<BookCardModel>): Observable<BookCardModel> {
+    return this.http.patch<BookCardModel>(`${this._URL_}/${bookId}`, partialBook)
+      .pipe(tap(() => this.refresh()));
+  }
+
+  deleteBookById(bookId: number): Observable<void> {
+    return this.http.delete<void>(`${this._URL_}/${bookId}`)
+      .pipe(tap(() => this.refresh()));
+  }
+
+  filterBooksByTitle(title: string): void {
+    if (!title.trim()) {
+      this._books$.next(this._booksData);
     }
-  }
-
-  getBookById(bookId: number): BookCardModel | undefined {
-    return this._books.find(book => book.id === bookId);
+    else {
+      const filtered = this._booksData.filter(book =>
+        book.name.toLowerCase().includes(title.toLowerCase())
+      );
+      this._books$.next(filtered);
+    }
   }
 }

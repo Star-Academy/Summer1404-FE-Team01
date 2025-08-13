@@ -1,16 +1,14 @@
-:host {
-}
-
 button {
   width: 100%;
   background-color: var(--color-primary);
   text-align: center;
   font-weight: bold;
   border-radius: 1rem;
-  padding: 1rem 0.5rem;
+  padding: 0.7rem 0.25rem;
   border: none;
   outline: none;
   color: var(--color-text-primary);
+
   &:hover {
     cursor: pointer;
     filter: contrast(200%);

@@ -1,7 +1,8 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 
-import {BookCardModel} from '../../../models/books.model';
-import {BookService} from '../services/book/book.service';
+import { BookCardModel } from '../../../models/books.model';
+import { BookService } from '../services/book/book.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-books',
@@ -10,15 +11,14 @@ import {BookService} from '../services/book/book.service';
   standalone: false
 })
 
-export class Books implements OnInit {
+export class Books {
 
   private readonly bookService: BookService = inject(BookService)
-  private _books = signal<BookCardModel[]>([])
+  private _books = toSignal(this.bookService.books$, { initialValue: this.bookService.booksData });
   private selectedBookId: number | null = null;
 
   public isEditModalOpen: boolean = false;
   public isDeleteDialogOpen = false;
-
 
   public get books(): BookCardModel[] {
     return this._books()
@@ -31,15 +31,6 @@ export class Books implements OnInit {
     return null
   }
 
-  ngOnInit() {
-    this._books.set(this.bookService.books);
-    this.bookService.books$.subscribe({
-      next: books => {
-        this._books.set(books);
-      }
-    })
-  }
-
   public onOpenEditModal(bookId: number): void {
     this.isEditModalOpen = true
     this.selectedBookId = bookId
@@ -47,7 +38,6 @@ export class Books implements OnInit {
 
   public onCloseEditModal(): void {
     this.isEditModalOpen = false;
-    this._books.set(this.bookService.books);
   }
 
 
@@ -61,12 +51,14 @@ export class Books implements OnInit {
   }
 
   public deleteBookHandler(): void {
-    this.onColoseDeleteDialog();
-    if (this.selectedBookId) {
-      console.log("deleting book");
-      this.bookService.deleteBookById(this.selectedBookId);
-      this._books.set(this.bookService.books);
-    }
+    if (!this.selectedBookId) return;
+
+    this.bookService.deleteBookById(this.selectedBookId).subscribe({
+      next: () => {
+        this.onColoseDeleteDialog();
+      }
+    });
   }
+
 
 }

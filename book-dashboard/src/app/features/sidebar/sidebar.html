@@ -1,12 +1,14 @@
-<aside>
+<aside class="sidebar">
   <a
-    [routerLink]="['/', 'book', 'books']"
-    [routerLinkActive]="'active-link'"
+    class="sidebar__link"
+    [routerLink]="['/', 'dashboard', 'books']"
+    [routerLinkActive]="'sidebar__link--active'"
     >Books</a
   >
   <a
-    [routerLink]="['/', 'book', 'create-book-form']"
-    [routerLinkActive]="'active-link'"
+    class="sidebar__link"
+    [routerLink]="['/', 'dashboard', 'create-book-form']"
+    [routerLinkActive]="'sidebar__link--active'"
     >Create Book</a
   >
 </aside>
